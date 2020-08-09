@@ -1,4 +1,27 @@
-# Init rails project
+# Install RVM and Ruby/Rails
+
+By following https://rvm.io/rvm/install to install rvm
+
+for short
+```
+curl -sSL https://get.rvm.io | bash -s stable
+```
+
+Install ruby 2.7.0
+
+```
+rvm install ruby-2.7.0
+rvm use ruby-2.7.0 --default
+```
+
+Install bundler / rails
+
+```
+gem install bundler
+gem install rails
+```
+
+# Init Rails project
 
 ```
 rails new eshop -d postgresql -T --skip-webpack-install --skip-javascript
