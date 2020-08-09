@@ -67,7 +67,6 @@ rails new eshop -d postgresql -T --skip-webpack-install --skip-javascript
 ```
 bundle add turbolinks
 bundle add jquery-rails
-bundle add bootstrap
 ```
 
 ```
@@ -95,9 +94,9 @@ rails generate model User email:string name:string password_digest:string
 
 # Controller
 
-- Sign up -> UsersController#new and UsersController#create
-- Sign in -> SessionsController#new and SessionsController#create
-- Sign out -> SessionsController#destroy
+- Sign up -> `UsersController#new` and `UsersController#create`
+- Sign in -> `SessionsController#new` and `SessionsController#create`
+- Sign out -> `SessionsController#destroy`
 
 # View
 
@@ -105,6 +104,7 @@ rails generate model User email:string name:string password_digest:string
 - views/sessions/new.html.erb
 
 # Using devise gem
+https://github.com/heartcombo/devise
 
 ```
 # Gemfile
