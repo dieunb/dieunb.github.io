@@ -21,7 +21,7 @@ gem install bundler
 gem install rails
 ```
 
-# Init Rails project
+# Init Rails project without webpack
 
 ```
 rails new eshop -d postgresql -T --skip-webpack-install --skip-javascript
