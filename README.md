@@ -20,4 +20,4 @@
 
 # Day 5
 - Authorization
-- Adminstrator
+- Admin dashboard
