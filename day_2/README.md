@@ -45,9 +45,10 @@ end
 ```
 
 # Using rake task to fake data
+https://github.com/ruby/rake
 
 ```
 rails g task db fake_data
 ```
 
-# Write unit test
+# Unit test
