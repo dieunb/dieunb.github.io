@@ -18,6 +18,12 @@ rails generate rspec:install
 
 # Unit test for controller
 
-Reference https://relishapp.com/rspec/rspec-rails/docs/controller-specs
+## References:
+- https://relishapp.com/rspec/rspec-rails/docs/controller-specs
+- https://relishapp.com/rspec/rspec-rails/v/4-0/docs/view-specs
 
+## Generate rspec test for `users_controller` with `new` and `create` action, and for view
 
+```
+rails g rspec:controller Users new create --controller-specs --no-request-specs
+```
