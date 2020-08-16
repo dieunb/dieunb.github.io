@@ -2,21 +2,34 @@
 
 ![design database](https://cacoo.com/diagrams/0lpzpe7Wgiif3xTI-7C373.png)
 
-# Implement models
+# Migration and models
 
 ## Category
+```
+rails g model Category name:string parent_id:integer
+```
+
 ```
 # app/models/category.rb
 
 class Category < ApplicationRecord
+  has_many :products
+
+  belongs_to :parent_category, class_name: Category.name, foreign_key: :parent_id
+  has_many :sub_categories, class_name: Category.name, foreign_key: :parent_id
 end
 ```
 
 ## Product
 ```
+rails g model Product name:string description:string price:float quantity:integer category_id:integer
+```
+
+```
 # app/models/product.rb
 
 class Product < ApplicationRecord
+  belongs_to :category
 end
 ```
 
@@ -32,6 +45,12 @@ class CategoriesController < ApplicationController
 
   def show
   end
+
+  def new
+  end
+
+  def create
+  end
 end
 ```
 
@@ -41,6 +60,12 @@ end
 class ProductsController < ApplicationController
   def show
   end
+
+  def new
+  end
+
+  def create
+  end
 end
 ```
 
@@ -49,6 +74,16 @@ https://github.com/ruby/rake
 
 ```
 rails g task db fake_data
+```
+
+```
+# lib/tasks/db.rake
+namespace :db do
+  desc "todo"
+  task fake_data: :environment do
+    # add your crazy code
+  end
+end
 ```
 
 # Unit test

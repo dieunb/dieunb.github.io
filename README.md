@@ -8,6 +8,11 @@
 - Category
 - Unit test
 
+# Day 2 plus
+- `rails c` and ruby interactive`irb`
+- Practice to create data and association in rails
+- [Ruby rake](https://www.rubyguides.com/2019/02/ruby-rake/)
+
 # Day 3
 - Review (content + rating) on a product
 - Ajax
