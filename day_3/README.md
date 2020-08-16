@@ -28,6 +28,14 @@ class Product < ApplicationRecord
 end
 ```
 
+## User
+```
+# app/models/user.rb
+
+class User < ApplicationRecord
+  has_many :reviews
+end
+```
 
 # Implement controllers/views
 
@@ -59,11 +67,17 @@ class ReviewsController < ApplicationController
 end
 ```
 
-# Using rake task to fake data
+# Update rake task
 https://github.com/ruby/rake
 
 ```
-rails g task db fake_data
+# lib/tasks/db.rake
+namespace :db do
+  desc "todo"
+  task fake_data: :environment do
+    # add your crazy code
+  end
+end
 ```
 
 # Unit test

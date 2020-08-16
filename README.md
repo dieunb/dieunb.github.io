@@ -18,6 +18,12 @@
 - Ajax
 - Unit test
 
+# Day 3 plus
+- Product average rating
+- [CarrierWave](https://github.com/carrierwaveuploader/carrierwave) gem is to upload image
+- Product image uploader
+- Review image uploader (upload image via AJAX)
+
 # Day 4
 - Comment on a review of a product
 - Ajax
