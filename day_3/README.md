@@ -1,6 +1,6 @@
 # Design database
 
-![design database](https://cacoo.com/diagrams/0lpzpe7Wgiif3xTI-7C373.png)
+![design database](https://cacoo.com/diagrams/0lpzpe7Wgiif3xTI-8D104.png)
 
 # Migration and models
 
