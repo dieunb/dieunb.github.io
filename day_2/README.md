@@ -52,3 +52,41 @@ rails g task db fake_data
 ```
 
 # Unit test
+
+- Generate controller spec for `products_controller`
+
+```
+rails g rspec:controller Products create --controller-specs --no-request-specs
+```
+
+- Write unit test
+
+```
+# app/spec/controllers/products_controller_spec.rb
+
+require 'rails_helper'
+
+RSpec.describe ProductsController, type: :controller do
+
+  describe "#new" do
+    it "returns http success" do
+      get :new
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "#create" do
+    it "returns http success" do
+      cateogry = Category.create(name: 'Laptop')
+      post :create, params: { product: { name: 'Macbook Pro 2015', price: 2500, quantity: 3, category_id: category.id } }
+      expect(Product.count).to eql(1)
+    end
+  end
+end
+```
+
+- Execute unit test
+
+```
+bundle exec rspec
+```
