@@ -32,3 +32,7 @@
 # Day 5
 - Authorization
 - Admin dashboard
+
+# Day 6
+- Ruby convention - Rubocop
+- Automation run unit test
