@@ -36,3 +36,7 @@
 # Day 6
 - Ruby convention - Rubocop
 - Automation run unit test
+- Deployment (Heroku, VPS)
+
+# Day 7 - Additional
+- Using [Full Text Search](https://www.postgresql.org/docs/current/textsearch.html) to search product
