@@ -125,3 +125,18 @@ end
 ```
 bundle exec rspec
 ```
+
+
+# Plus
+
+- Using `rails console` to create 10 categories and 20 products
+  + Samsung, Macbook, Asus, Acer, iPhone, iPad, Dell, LG, HP, Lenovo
+- Select all products of Macbook category
+- Select all categories
+- Select category by category name Ipad
+- Update category name iPad -> Apple iPad
+- Select all products
+- Select the last products order by id asc
+- Select cagegory name of a specific product
+- Select cagegory parent name of category of a specific product
+- Using rake task to rebuild above data
