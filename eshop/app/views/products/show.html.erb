@@ -23,7 +23,20 @@
   <%= @product.category.name %>
 </p>
 
-<%= render 'reviews/form', review: @review %>
+<p>
+  <strong>Avg rating:</strong>
+  <%= @product.aggregate_rating %>
+</p>
+
+<hr />
+<% if user_signed_in? %>
+  <%= render 'reviews/form', review: @review %>
+<% end %>
+<hr />
+
+<% @product.reviews.each do |review| %>
+  <p>Content: <%= review.content %> <br/> Rating: <%= review.rating %></p>
+<% end %>
 
 <%= link_to 'Home', root_path %> |
 <%= link_to 'Back', products_path %>

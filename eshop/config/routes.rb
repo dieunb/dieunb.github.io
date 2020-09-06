@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   resources :categories, only: %w[index new create show]
-  resources :products, only: %w[index new create show]
+  resources :products, only: %w[index new create show] do
+    resources :reviews, only: %w[create]
+  end
 end
