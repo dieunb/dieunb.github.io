@@ -32,10 +32,12 @@
 # Day 5
 - Authorization
 - Admin dashboard
+- Gem [cancancan](https://github.com/CanCanCommunity/cancancan)
+- Gem [Pundit](https://github.com/varvet/pundit)
 
 # Day 6
 - Ruby convention - Rubocop
-- Automation run unit test
+- Continuous integration (CI) with github action
 - Deployment (Heroku, VPS)
 
 # Day 7 - Additional
