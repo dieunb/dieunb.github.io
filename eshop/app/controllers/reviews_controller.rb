@@ -7,11 +7,14 @@ class ReviewsController < ApplicationController
     @review = @product.reviews.new(review_params)
     @review.user = current_user
 
-    if @review.save
-      @product.calculate_rating
-      redirect_to @product, notice: 'Review was successfully created.'
-    else
-      render 'products/show'
+    respond_to do |format|
+      if @review.save
+        @product.calculate_rating
+        format.js
+        format.json { render json: @review, status: :created, location: @review }
+      else
+        format.json { render json: @review.errors, status: :unprocessable_entity }
+      end
     end
   end
 
