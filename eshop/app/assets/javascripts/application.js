@@ -14,3 +14,15 @@
 //= require turbolinks
 //= require rails-ujs
 //= require_self
+
+$(document).ready(function() {
+  $("#new_review").on("ajax:success", function(event) {
+    var data, status, xhr, _ref;
+    _ref = event.detail, data = _ref[0], status = _ref[1], xhr = _ref[2];
+    debugger;
+    return $("#new_review").append(xhr.responseText);
+  }).on("ajax:error", function(event) {
+    debugger;
+    return $("#new_review").append("<p>ERROR</p>");
+  });
+});
