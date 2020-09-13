@@ -36,6 +36,10 @@
 
 <% @product.reviews.each do |review| %>
   <p>Content: <%= review.content %> <br/> Rating: <%= review.rating %></p>
+
+  <% if user_signed_in? %>
+    <%= render 'comments/form', review: review, comment: @comment %>
+  <% end %>
 <% end %>
 
 <%= link_to 'Home', root_path %> |
