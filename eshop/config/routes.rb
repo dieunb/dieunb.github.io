@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   resources :reviews, only: %w[] do
     resources :comments, only: %w[create]
   end
+
+  namespace :admin do
+    root 'static_pages#index'
+  end
 end
