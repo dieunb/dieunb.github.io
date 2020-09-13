@@ -25,20 +25,24 @@
 
 <p>
   <strong>Avg rating:</strong>
-  <% if @product.reviews.any? %>
-    <%= @product.aggregate_rating %>
-  <% else %>
-    Not have any reviews
-  <% end %>
+  <%= @product.aggregate_rating %>
 </p>
 
+<hr />
 <% if user_signed_in? %>
-  <hr />
   <%= render 'reviews/form', review: @review %>
 <% end %>
+<hr />
 
 <% @product.reviews.each do |review| %>
   <p>Content: <%= review.content %> <br/> Rating: <%= review.rating %></p>
+  <ul id='comments_of_review_<%= review.id %>'>
+    <% review.comments.each do |comment| %>
+      <li>
+        <p><%= comment.user.email %>: <%= comment.content %></p>
+      </li>
+    <% end %>
+  </ul>
 
   <% if user_signed_in? %>
     <%= render 'comments/form', review: review, comment: @comment %>
