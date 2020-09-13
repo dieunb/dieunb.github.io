@@ -25,11 +25,13 @@
 
 <p>
   <strong>Avg rating:</strong>
-  <% if @product.reviews.any? %>
-    <%= @product.aggregate_rating %>
-  <% else %>
-    Not have any reviews
-  <% end %>
+  <span id="aggregate_rating">
+    <% if @product.reviews.any? %>
+      <%= @product.aggregate_rating %>
+    <% else %>
+      Not have any reviews
+    <% end %>
+  </span>
 </p>
 
 <% if user_signed_in? %>
@@ -37,9 +39,16 @@
   <%= render 'reviews/form', review: @review %>
 <% end %>
 
-<% @product.reviews.each do |review| %>
-  <p>Content: <%= review.content %> <br/> Rating: <%= review.rating %></p>
-<% end %>
+<div id='reviews'>
+  <% @product.reviews.each do |review| %>
+    <div id="review_item_<%= review.id %>">
+      <p><%= review.user.email %></p>
+      <p>Content: <%= review.content %></p>
+      <p>Rating: <%= review.rating %></p>
+    </div>
+    <hr />
+  <% end %>
+</div>
 
 <%= link_to 'Home', root_path %> |
 <%= link_to 'Back', products_path %>

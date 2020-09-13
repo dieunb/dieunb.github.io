@@ -1,15 +1,6 @@
 <%= form_with(model: review, url: product_reviews_path(product_id: @product.id), id: "new_review") do |form| %>
-  <% if review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-      <ul>
-        <% review.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div id="error_explanation">
+  </div>
 
   <div class="field">
     <%= form.label :content %>

@@ -10,10 +10,9 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         @product.calculate_rating
-        format.js
-        format.json { render json: @review, status: :created, location: @review }
+        format.json { render json: review_serializer, status: :created }
       else
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        format.json { render json: @review.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end
@@ -25,5 +24,19 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:content, :rating)
+    end
+
+    def review_serializer
+      {
+        id: @review.id,
+        content: @review.content,
+        rating: @review.rating,
+        user: {
+          email: @review.user.email
+        },
+        product: {
+          aggregate_rating: @product.reload.aggregate_rating
+        }
+      }
     end
 end
