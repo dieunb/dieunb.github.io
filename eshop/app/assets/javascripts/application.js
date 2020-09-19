@@ -15,7 +15,7 @@
 //= require rails-ujs
 //= require_self
 
-$(document).ready(function() {
+$(document).on('ready turbolinks:load', function() {
   $("#new_review").on("ajax:success", function(event) {
     var data, status, xhr, _ref;
     _ref = event.detail, data = _ref[0], status = _ref[1], xhr = _ref[2];
