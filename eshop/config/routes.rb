@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :products, only: %w[index new create show] do
     resources :reviews, only: %w[create]
   end
+
+  resources :reviews, only: %w[] do
+    resources :comments, only: %w[create]
+  end
 end

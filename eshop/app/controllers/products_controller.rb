@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   def show
     @review = Review.new
+    @comment = Comment.new
   end
 
   private
