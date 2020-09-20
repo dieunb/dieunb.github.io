@@ -18,7 +18,6 @@
 $(document).on("ready turbolinks:load", function() {
   $("#new_review")
     .on("ajax:success", function(event) {
-      debugger;
       var data, status, xhr, _ref;
       (_ref = event.detail),
         (data = _ref[0]),
@@ -43,6 +42,8 @@ $(document).on("ready turbolinks:load", function() {
         <p>${review.user.email}</p>
         <p>Content: ${review.content}</p>
         <p>Rating: ${review.rating}</p>
+        <ul id="comments_of_review_${review.id}"></ul>
+        ${review.comment_form}
       </div>
       <hr />
     `;

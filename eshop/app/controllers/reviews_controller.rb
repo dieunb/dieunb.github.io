@@ -9,8 +9,12 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
+        html_comment_form = render_to_string(
+          partial: 'comments/form',
+          locals: { review: @review, comment: Comment.new }
+        )
         @product.calculate_rating
-        format.json { render json: review_serializer, status: :created }
+        format.json { render json: review_serializer(html_comment_form), status: :created }
       else
         format.json { render json: @review.errors.full_messages, status: :unprocessable_entity }
       end
@@ -26,7 +30,7 @@ class ReviewsController < ApplicationController
       params.require(:review).permit(:content, :rating)
     end
 
-    def review_serializer
+    def review_serializer(comment_form)
       {
         id: @review.id,
         content: @review.content,
@@ -37,10 +41,14 @@ class ReviewsController < ApplicationController
         product: {
           aggregate_rating: @product.reload.aggregate_rating
         },
-        comment_form: render_to_string(
-          partial: 'comments/form',
-          locals: { review: @review, comment: Comment.new }
-        )
+        comment_form: comment_form
       }
+    end
+
+    def comment_form_html
+      render_to_string(
+        partial: 'comments/form',
+        locals: { review: @review, comment: Comment.new }
+      )
     end
 end
