@@ -36,7 +36,11 @@ class ReviewsController < ApplicationController
         },
         product: {
           aggregate_rating: @product.reload.aggregate_rating
-        }
+        },
+        comment_form: render_to_string(
+          partial: 'comments/form',
+          locals: { review: @review, comment: Comment.new }
+        )
       }
     end
 end
