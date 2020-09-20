@@ -15,16 +15,23 @@
 //= require rails-ujs
 //= require_self
 
-$(document).on('ready turbolinks:load', function() {
-  $("#new_review").on("ajax:success", function(event) {
-    var data, status, xhr, _ref;
-    _ref = event.detail, data = _ref[0], status = _ref[1], xhr = _ref[2];
-    $("#reviews").append(renderReviewItem(data));
-    $("#aggregate_rating").html(data.product.aggregate_rating);
-    $("#new_review")[0].reset();
-  }).on("ajax:error", function(event) {
-    $("#error_explanation").html(reviewErroForm(event.detail[0]));
-  });
+$(document).on("ready turbolinks:load", function() {
+  $("#new_review")
+    .on("ajax:success", function(event) {
+      debugger;
+      var data, status, xhr, _ref;
+      (_ref = event.detail),
+        (data = _ref[0]),
+        (status = _ref[1]),
+        (xhr = _ref[2]);
+      $("#reviews").append(renderReviewItem(data));
+      $("#aggregate_rating").html(data.product.aggregate_rating);
+      $("#new_review")[0].reset();
+      $("#error_explanation").html("");
+    })
+    .on("ajax:error", function(event) {
+      $("#error_explanation").html(reviewErroForm(event.detail[0]));
+    });
 
   function renderReviewItem(review) {
     return reviewItemTemplate(review);
@@ -42,10 +49,10 @@ $(document).on('ready turbolinks:load', function() {
   }
 
   function reviewErroForm(errors) {
-    let errorList = document.createElement('ul');
+    let errorList = document.createElement("ul");
 
     errors.forEach(function(error) {
-      let errorItem = document.createElement('li');
+      let errorItem = document.createElement("li");
       errorItem.appendChild(document.createTextNode(error));
       errorList.appendChild(errorItem);
     });
