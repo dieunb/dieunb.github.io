@@ -13,5 +13,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'static_pages#index'
+    resources :categories
+    resources :products
+    resources :users
+    resources :reviews
+    resources :comments
   end
 end
