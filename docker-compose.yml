@@ -1,0 +1,30 @@
+version: '3'
+services:
+  web:
+    tty: true
+    stdin_open: true
+    build: .
+    environment:
+      - DATABASE_USER_NAME=stepup_devs
+      - DATABASE_PASSWORD=123456
+      - DATABASE_HOST=northwind_db
+      - DATABASE_NAME=ruby_mvc_development
+    command: |
+      ./wait-for-it.sh northwind_db:5432 -t 60 -- bash -c "bundle exec rake db:migrate && rackup -o 0.0.0.0 -p 3000"
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8080:3000"
+    depends_on:
+      - northwind_db
+  northwind_db:
+    image: postgres:9.6.17-alpine
+    environment:
+      - POSTGRES_USER=stepup_devs
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=ruby_mvc_development
+    volumes:
+      - /var/lib/postgresql/data
+      - ./db/northwind.sql:/docker-entrypoint-initdb.d/northwind.sql
+    ports:
+      - "5432"
